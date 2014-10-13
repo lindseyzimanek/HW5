@@ -14,22 +14,44 @@
     
         Loan Amount:
         <asp:TextBox ID="txbxLoanAmount" runat="server"></asp:TextBox>
+        
         <br />
+        
         Annual Interest %:
         <asp:TextBox ID="txbxAnnualInterest" runat="server"></asp:TextBox>
+        
         <br />
+        
         Loan Term (Years):
         <asp:TextBox ID="txbxLoanTerm" runat="server"></asp:TextBox>
+        
         <br />
+        
         <asp:Button ID="btnCalculate" runat="server" Text="Calculate" />
+       
+         <br />
         <br />
-        <br />
+        
+        <%If Not IsPostBack Then%>
+        <p>
         <asp:Label ID="lblWelcome" runat="server" Text="Welcome to my morgage calculator. Please complete the fields above to have your monthly payment and loan repayment schedule calculated for you."></asp:Label>
-        Monthly Payment: 
-        &nbsp; <asp:Label ID="lblMonthlyPmt" runat="server"></asp:Label>
+        </p>
+       
+        <%Else%>
+        
+        <br />
+
+         Monthly Payment: &nbsp; <asp:Label ID="lblMonthlyPmt" runat="server"></asp:Label>
+        
         <br />
         <br />
-        <asp:GridView ID="loanGridView" runat="server" />
+        
+        <asp:GridView ID="loanGridView" runat="server" CssClass="cssgridview">
+            <AlternatingRowStyle CssClass="alt" />
+        </asp:GridView>
+
+        <%End If%>
+    
     </div>
     </form>
 </body>
