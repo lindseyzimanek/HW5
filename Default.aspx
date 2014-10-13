@@ -15,21 +15,28 @@
         Loan Amount:
         <asp:TextBox ID="txbxLoanAmount" runat="server"></asp:TextBox>
         
+        <asp:RequiredFieldValidator ID="rfvLoanAmount" runat="server" ControlToValidate="txbxLoanAmount" ErrorMessage="Please enter the amount of your loan."></asp:RequiredFieldValidator>
+        
         <br />
         
         Annual Interest %:
         <asp:TextBox ID="txbxAnnualInterest" runat="server"></asp:TextBox>
+        
+        <asp:RequiredFieldValidator ID="rfvAnnualInterest" runat="server" ControlToValidate="txbxAnnualInterest" ErrorMessage="Please enter your annual interest rate percentage."></asp:RequiredFieldValidator>
         
         <br />
         
         Loan Term (Years):
         <asp:TextBox ID="txbxLoanTerm" runat="server"></asp:TextBox>
         
-        <br />
+        <asp:RequiredFieldValidator ID="rfvLoanTerm" runat="server" ControlToValidate="txbxLoanTerm" ErrorMessage="Please enter the number of years of your loan term."></asp:RequiredFieldValidator>
         
+        <br />
+      
         <asp:Button ID="btnCalculate" runat="server" Text="Calculate" />
-       
-         <br />
+        <asp:Button ID="btnClear" runat="server" Text="Clear" />
+
+        <br />
         <br />
         
         <%If Not IsPostBack Then%>

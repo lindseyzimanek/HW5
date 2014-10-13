@@ -12,6 +12,7 @@ Partial Class _Default
         Dim term As Integer
         Dim loanTerm As Integer
         Dim monthlyPayment As Double
+        Dim paymentDate As Date
 
         'declare variables for loan amortization
         Dim interestPaid As Double
@@ -48,8 +49,16 @@ Partial Class _Default
 
         'add items to listbox, format them for currency, and add pad spacing for each item
         loanAmortTbl.Columns.Add("Payment Number", System.Type.GetType("System.String"))
+        loanAmortTbl.Columns.Add("Payment Date", System.Type.GetType("System.String"))
         loanAmortTbl.Columns.Add("Principal Paid", System.Type.GetType("System.String"))
         loanAmortTbl.Columns.Add("Interest Paid", System.Type.GetType("System.String"))
+        loanAmortTbl.Columns.Add("New Balance", System.Type.GetType("System.String"))
+
+        'payment now
+        paymentDate = Date.Now
+
+        'first payment is next month
+        paymentDate = DateAdd("m", 1, paymentDate)
 
         'use loop to display loan balance and interst paid over term of loan
         For counterStart = 1 To loanTerm
@@ -63,9 +72,13 @@ Partial Class _Default
             'write data to new row in gridview
             tRow = loanAmortTbl.NewRow()
             tRow("Payment Number") = String.Format(counterStart)
+            tRow("Payment Date") = String.Format("{0:mm/dd/yyyy}", paymentDate)
             tRow("Principal Paid") = String.Format("{0:C}", principal)
             tRow("Interest Paid") = String.Format("{0:C}", interestPaid)
             loanAmortTbl.Rows.Add(tRow)
+
+            'add one month to payment date
+            paymentDate = DateAdd("m", 1, paymentDate)
 
             'loops to next counterStart and continues loop until counterStart requirements are met (loanTerm)
         Next counterStart
@@ -81,5 +94,11 @@ Partial Class _Default
 
 
 
+    End Sub
+
+    Protected Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        txbxLoanAmount.Text = String.Empty
+        txbxAnnualInterest.Text = String.Empty
+        txbxLoanTerm.Text = String.Empty
     End Sub
 End Class
