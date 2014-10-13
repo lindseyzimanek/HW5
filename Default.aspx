@@ -12,7 +12,9 @@
     <form id="form1" runat="server">
     <div>
     
-        Loan Amount:
+        <hr style="color: white" />
+       
+         Loan Amount:
         <asp:TextBox ID="txbxLoanAmount" runat="server"></asp:TextBox>
         
         <asp:RequiredFieldValidator ID="rfvLoanAmount" runat="server" ControlToValidate="txbxLoanAmount" ErrorMessage="Please enter the amount of your loan."></asp:RequiredFieldValidator>

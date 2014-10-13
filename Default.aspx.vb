@@ -72,9 +72,10 @@ Partial Class _Default
             'write data to new row in gridview
             tRow = loanAmortTbl.NewRow()
             tRow("Payment Number") = String.Format(counterStart)
-            tRow("Payment Date") = String.Format("{0:mm/dd/yyyy}", paymentDate)
+            tRow("Payment Date") = String.Format("{0:MM/dd/yyyy}", paymentDate)
             tRow("Principal Paid") = String.Format("{0:C}", principal)
             tRow("Interest Paid") = String.Format("{0:C}", interestPaid)
+            tRow("New Balance") = String.Format("{0:C}", nBalance)
             loanAmortTbl.Rows.Add(tRow)
 
             'add one month to payment date
@@ -85,13 +86,6 @@ Partial Class _Default
 
         loanGridView.DataSource = loanAmortTbl
         loanGridView.DataBind()
-
-
-
-
-
-
-
 
 
     End Sub
