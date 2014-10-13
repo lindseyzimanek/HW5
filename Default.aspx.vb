@@ -87,6 +87,7 @@ Partial Class _Default
         loanGridView.DataSource = loanAmortTbl
         loanGridView.DataBind()
 
+        loanGridView.Visible = True
 
     End Sub
 
@@ -94,5 +95,9 @@ Partial Class _Default
         txbxLoanAmount.Text = String.Empty
         txbxAnnualInterest.Text = String.Empty
         txbxLoanTerm.Text = String.Empty
+
+        loanGridView.Visible = False
+
+        lblMonthlyPmt.Text = String.Empty
     End Sub
 End Class
