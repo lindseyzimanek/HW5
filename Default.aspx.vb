@@ -2,4 +2,83 @@
 Partial Class _Default
     Inherits System.Web.UI.Page
 
+    Protected Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
+
+        'declare variables
+        Dim loanAmount As Double
+        Dim annualRate As Double
+        Dim interestRate As Double
+        Dim term As Integer
+        Dim loanTerm As Integer
+        Dim monthlyPayment As Double
+
+        'declare variables for loan amortization
+        Dim interestPaid As Double
+        Dim nBalance As Double
+        Dim principal As Double
+
+        'declare table to hold payment info
+        Dim table As DataTable = New DataTable("ParentTable")
+        Dim loanAmortTbl As DataTable = New DataTable("AmortizationTable")
+        Dim tRow As DataRow
+
+        'add default values to variables
+        interestPaid = 0.0
+
+        'convert input strings to appropriate variable assigned
+        loanAmount = CDbl(txbxLoanAmount.Text)
+        annualRate = CDbl(txbxAnnualInterest.Text)
+        term = CDbl(txbxLoanTerm.Text)
+
+        'format loan input to currency
+        txbxLoanAmount.Text = FormatCurrency(loanAmount)
+
+        'convert annual rate to monthly rate
+        interestRate = annualRate / (100 * 12)
+
+        'convert years (term) into months (loan term)
+        loanTerm = term * 12
+
+        'calculate monthly payment using converted interst rate and loan term
+        monthlyPayment = loanAmount * interestRate / (1 - Math.Pow((1 + interestRate), (-loanTerm)))
+
+        'display monthly payment in textbox and convert to currency
+        lblMonthlyPmt.Text = FormatCurrency(monthlyPayment)
+
+        'add items to listbox, format them for currency, and add pad spacing for each item
+        loanAmortTbl.Columns.Add("Payment Number", System.Type.GetType("System.String"))
+        loanAmortTbl.Columns.Add("Principal Paid", System.Type.GetType("System.String"))
+        loanAmortTbl.Columsn.Add("Interest Paid", System.Type.GetType("System.String"))
+
+        'use loop to display loan balance and interst paid over term of loan
+        For counterStart = 1 To loanTerm
+
+            'perform calculations for amortization of loan
+            interestPaid = loanAmount * interestRate
+            principal = monthlyPayment - interestPaid
+            nBalance = loanAmount - principal
+            loanAmount = nBalance
+
+            'write data to new row in gridview
+            tRow = loanAmortTbl.NewRow()
+            tRow("Payment Number") = String.Format(counterStart)
+            tRow("Principal Paid") = String.Format("{0:C", principal)
+            tRow("Interest Paid") = String.Format("{0:C", interestPaid)
+            loanAmortTbl.Rows.Add(tRow)
+
+            'loops to next counterStart and continues loop until counterStart requirements are met (loanTerm)
+        Next counterStart
+
+        loanGridView.DataSource = loanAmortTbl
+        loanGridView.DataBind()
+
+
+
+
+
+
+
+
+
+    End Sub
 End Class

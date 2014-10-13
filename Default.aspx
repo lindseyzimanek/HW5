@@ -4,9 +4,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Lindsey's Loan Calculator</title>
 </head>
 <body>
+    <h1> Lindsey's Loan Calculator </h1>
     <form id="form1" runat="server">
     <div>
     
@@ -22,8 +23,12 @@
         <asp:Button ID="btnCalculate" runat="server" Text="Calculate" />
         <br />
         <br />
-        <asp:Label ID="lblWelcome" runat="server" Text="Label"></asp:Label>
-    
+        <asp:Label ID="lblWelcome" runat="server" Text="Welcome to my morgage calculator. Please complete the fields above to have your monthly payment and loan repayment schedule calculated for you."></asp:Label>
+        Monthly Payment: 
+        &nbsp; <asp:Label ID="lblMonthlyPmt" runat="server"></asp:Label>
+        <br />
+        <br />
+        <asp:GridView ID="loanGridView" runat="server" />
     </div>
     </form>
 </body>
