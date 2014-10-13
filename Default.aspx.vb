@@ -1,4 +1,5 @@
-﻿
+﻿Imports System.Data
+
 Partial Class _Default
     Inherits System.Web.UI.Page
 
@@ -48,7 +49,7 @@ Partial Class _Default
         'add items to listbox, format them for currency, and add pad spacing for each item
         loanAmortTbl.Columns.Add("Payment Number", System.Type.GetType("System.String"))
         loanAmortTbl.Columns.Add("Principal Paid", System.Type.GetType("System.String"))
-        loanAmortTbl.Columsn.Add("Interest Paid", System.Type.GetType("System.String"))
+        loanAmortTbl.Columns.Add("Interest Paid", System.Type.GetType("System.String"))
 
         'use loop to display loan balance and interst paid over term of loan
         For counterStart = 1 To loanTerm
@@ -62,8 +63,8 @@ Partial Class _Default
             'write data to new row in gridview
             tRow = loanAmortTbl.NewRow()
             tRow("Payment Number") = String.Format(counterStart)
-            tRow("Principal Paid") = String.Format("{0:C", principal)
-            tRow("Interest Paid") = String.Format("{0:C", interestPaid)
+            tRow("Principal Paid") = String.Format("{0:C}", principal)
+            tRow("Interest Paid") = String.Format("{0:C}", interestPaid)
             loanAmortTbl.Rows.Add(tRow)
 
             'loops to next counterStart and continues loop until counterStart requirements are met (loanTerm)

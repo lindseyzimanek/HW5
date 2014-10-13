@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Lindsey's Loan Calculator</title>
+    <link rel="stylesheet" href="StyleSheet.css" type="text/css" />
 </head>
 <body>
     <h1> Lindsey's Loan Calculator </h1>

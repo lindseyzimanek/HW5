@@ -1,2 +1,13 @@
-﻿body {
-}
+﻿body {background-color: orange; color: blue;}
+
+/*custom classes start*/
+.bold {font-weight:bold; font-size: 24px;}
+/*custom classes end*/
+
+/*CSS for gridview start*/
+.cssgridview {width:auto; margin:5px 0 10px 0; border: solid 1px #525252; border-collapse:collapse; text-align:center; font-family: "Comic Sans MS"; color:pink;}
+.cssgridview td {padding:10px; border:solid 1px #c1c1c1; color:#717171;}
+.cssgridview th {padding:10px; color: #fff; background:#424242 url(./style/grd_head.png) repeat-x top; border-left:solid 1px #525252; font-family:0.9em;}
+.cssgridview .alt {background-color:aqua;}
+/*CSS for gridview end*/
+
